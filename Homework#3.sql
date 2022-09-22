@@ -416,7 +416,7 @@ select*from room_stays;
 select * from guest WHERE year(birthdays) < 2000;
 
 /* #3 */
-select rooms.rooms_name, room_stays.sale from rooms join room_stays on rooms.id=room_stays.room_id WHERE room_stays.sale > 100;
+select rooms.rooms_name, room_stays.sale from rooms inner join room_stays on rooms.id=room_stays.room_id WHERE room_stays.sale > 100;
 
 /* #4 */
 select distinct name from guest;
