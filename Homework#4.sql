@@ -462,20 +462,25 @@ select  top 10 * from service_sales inner join services on service_sales.id= ser
 /* #5 */
 
 
-SELECT levels.guest_id,guest.name
+SELECT guest.name
 FROM levels
  join guest
-on levels.id=guest.id
-WHERE levels.classes_id IN(1,2,3)
-GROUP BY levels.guest_id,guest.name
-HAVING COUNT(levels.classes_id) > = 2;
+on levels.guest_id=guest.id
+GROUP BY guest.id,guest.name
+HAVING COUNT(*) > 1;
 
 /* #6 */
-SELECT levels.guest_id,guest.name, levels.level
+SELECT guest.name
 FROM levels
  join guest
-on levels.id=guest.id
-WHERE levels.classes_id IN(1,2,3)  AND levels.level > 5
-GROUP BY levels.guest_id,guest.name,levels.level
-HAVING COUNT(levels.classes_id) > = 2;
+on levels.guest_id=guest.id
+WHERE levels.Level > 5
+GROUP BY guest.id,guest.name
+HAVING COUNT(*) > 1;
 
+/* #7 */
+SELECT guest.name, MAX(levels.Level) AS 'Level' 
+FROM levels  
+JOIN guest  
+ON levels.guest_id = guest.id 
+GROUP BY guest.ID, guest.Name;
