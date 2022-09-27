@@ -450,10 +450,10 @@ select * from guest g inner join levels l on g.id = l.id  join classes c on l.id
 
 /* #1 */
 
-select * from users left join roles on users.id = roles.id;
+SELECT users.user_name FROM users  JOIN roles ON users.role_id = roles.id where roles.role_name = 'Admin';
 /* #2 */
 
-select * from taverns inner join users on taverns.id= users.id join roles on users.id=roles.id join location on taverns.id=location.id where roles.role_name ='admin';
+SELECT * FROM users  JOIN roles  ON users.role_id = roles.id JOIN Taverns  ON taverns.owner_id = users.id JOIN location ON location.ID = taverns.Location_id where roles.role_name = 'Admin'
 /* #3 */
 select * from guest inner join levels on guest.id = levels.id join classes on levels.id=classes.id order by guest.name asc;
 /* #4 */
